@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/Totoro.dir/main.cpp.o -o Totoro 
