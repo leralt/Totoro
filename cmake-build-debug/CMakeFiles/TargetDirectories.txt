@@ -1,3 +1,0 @@
-/home/long/Projects/Totoro/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/long/Projects/Totoro/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/long/Projects/Totoro/cmake-build-debug/CMakeFiles/Totoro.dir
