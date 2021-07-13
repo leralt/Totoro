@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string.h>
 #include <netinet/in.h>
 #include "wrap.h"
 
