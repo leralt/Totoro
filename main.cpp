@@ -10,7 +10,7 @@
 
 
 void readFile(std::string filepath,char* buff){
-    std::string base_path = "home/lyc/vscode_ws/www/";
+    std::string base_path = "home/lyc/vscode_ws/www";
     std::ifstream getfile;
     char buf[1024];
     getfile.open(base_path + filepath, std::ios::in);
