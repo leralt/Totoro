@@ -2,6 +2,7 @@
 #include <string.h>
 #include <string>
 #include <fstream>
+#include <sstream>
 #include <netinet/in.h>
 #include "wrap.h"
 
@@ -9,10 +10,10 @@
 
 
 void readFile(std::string filepath,char* buff){
-    std::string basepath = "home/lyc/vscode_ws/www";
+    std::string base_path = "home/lyc/vscode_ws/www/";
     std::ifstream getfile;
     char buf[1024];
-    getfile.open(basepath+filepath,std::ios::in);
+    getfile.open(base_path + filepath, std::ios::in);
     getfile.read(buf,1024);
     strcpy(buff,u8"HTTP/1.1 200 OK\nContent-Type: text/html\n\n");
     strcat(buff,buf);
@@ -47,12 +48,17 @@ int main() {
     //printf("%u", ntohl(client.sin_addr.s_addr));
     //Write(connfd,buff,1024);
     int connfd = Accept(sock_fd,(sockaddr*)&client, &clientlen);
-    while(1){
+    while(true){
         if(-1 == recv(connfd,buff, strlen(buff),0)){
             perr_exit("recv error");
         };
-
-        readFile("index.html",html);
+        std::istringstream str(buff);
+        std::string no,path;
+        str >> no>>path;
+        if(path == "close"){
+            break;
+        }
+        readFile(path,html);
         //printf("%s",buff);
         if(-1 == send(connfd,html, strlen(html),0)){
             perr_exit("send error");
