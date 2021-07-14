@@ -3,4 +3,11 @@ project(Totoro)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Totoro main.cpp wrap.h)
+
+aux_source_directory(src SRC_SUB)
+aux_source_directory(. SRC_CUR)
+
+
+add_executable(Totoro ${SRC_SUB} ${SRC_CUR})
+
+include_directories(include)
