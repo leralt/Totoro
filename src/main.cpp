@@ -28,6 +28,7 @@ void readFile(std::string filepath,char* buff){
 }
 
 
+
 int main() {
     //recv buff
     char buff[1024];
@@ -48,7 +49,7 @@ int main() {
     
     sockaddr_in client;
     socklen_t clientlen = sizeof(client);
-
+    
     int connfd = Accept(sock_fd,(sockaddr*)&client, &clientlen);
     while(true){
         if(-1 == recv(connfd,buff, strlen(buff),0)){
