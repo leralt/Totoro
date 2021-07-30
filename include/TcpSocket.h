@@ -5,18 +5,24 @@
 #include <unistd.h>
 #include <iostream>
 #include <arpa/inet.h>
-
+#include "wrap.h"
 
 using namespace std;
 
 class TcpSocket {
 private:
     int conn_fd; /*通信描述符*/
+    string pages; /*存储文件内容*/
+
+    int readFile(string path);
+
 public:
     TcpSocket(int sock_fd);
+
     ~TcpSocket();
 
-    int sendmsg(string massage);
-    string recvmsg();
+    int sendPage();
+
+    int getRequest();
 };
 #endif /*_TCPSOCKET_H_*/

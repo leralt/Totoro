@@ -1,5 +1,4 @@
 #include "TcpServer.h"
-#include "wrap.h"
 
 TcpServer::TcpServer() {
     sock_fd = Socket(AF_INET, SOCK_STREAM, 0);
