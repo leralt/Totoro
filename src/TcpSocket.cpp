@@ -1,4 +1,3 @@
-#include <fstream>
 #include "TcpSocket.h"
 
 TcpSocket::TcpSocket(int sock_fd) {
@@ -31,7 +30,8 @@ int TcpSocket::readFile(string path) {
         path = "/index.html";
     }
 
-    getfile.open(base_path + path, std::ios::in);
+    base_path.append(path);
+    getfile.open(base_path, std::ios::in);
     getfile.read(buf, 1024);
     pages.append("HTTP/1.1 200 OK\nContent-Type: text/html\n\n");
     pages.append(buf);

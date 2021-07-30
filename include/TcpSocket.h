@@ -4,6 +4,7 @@
 #include <cstring>
 #include <unistd.h>
 #include <iostream>
+#include <fstream>
 #include <arpa/inet.h>
 #include "wrap.h"
 

@@ -16,19 +16,19 @@ void readFile(const std::string &filepath, char *buff);
 
 void headers();
 
-void readFile(const std::string &filepath, char *buff) {
-    std::string base_path = "home/lyc/vscode_ws/www";
-    std::ifstream getfile;
-    char buf[1024];
-    std::cout << base_path + filepath << std::endl;
-    getfile.open(base_path + filepath, std::ios::in);
-    getfile.read(buf, 1024);
-    memcpy(buff, "HTTP/1.1 200 OK\nContent-Type: text/html\n\n",
-           sizeof("HTTP/1.1 200 OK\nContent-Type: text/html\n\n"));
-    strcat(buff, buf);
+// void readFile(const std::string &filepath, char *buff) {
+//     std::string base_path = "home/lyc/vscode_ws/www";
+//     std::ifstream getfile;
+//     char buf[1024];
+//     std::cout << base_path + filepath << std::endl;
+//     getfile.open(base_path + filepath, std::ios::in);
+//     getfile.read(buf, 1024);
+//     memcpy(buff, "HTTP/1.1 200 OK\nContent-Type: text/html\n\n",
+//            sizeof("HTTP/1.1 200 OK\nContent-Type: text/html\n\n"));
+//     strcat(buff, buf);
 
-    getfile.close();
-}
+//     getfile.close();
+// }
 
 
 
