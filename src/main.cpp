@@ -1,18 +1,18 @@
 #include <iostream>
-#include <string.h>
+#include <cstring>
 #include <string>
 #include <fstream>
 #include <sstream>
 #include <netinet/in.h>
-#include "../include/wrap.h"
+#include "../include/TcpServer.h"
+
+using namespace std;
 
 #define SERVER_PORT 9527
 #define SERVER_STRING "Server: Totoro 0.1.0\r\n"
 
-
 void readFile(std::string filepath,char* buff);
 void headers();
-
 
 void readFile(std::string filepath,char* buff){
     std::string base_path = "home/lyc/vscode_ws/www";
@@ -21,9 +21,9 @@ void readFile(std::string filepath,char* buff){
     std::cout<<base_path + filepath<<std::endl;
     getfile.open(base_path + filepath, std::ios::in);
     getfile.read(buf,1024);
-    strcpy(buff,u8"HTTP/1.1 200 OK\nContent-Type: text/html\n\n");
+    memcpy(buff,"HTTP/1.1 200 OK\nContent-Type: text/html\n\n",sizeof("HTTP/1.1 200 OK\nContent-Type: text/html\n\n"));
     strcat(buff,buf);
-    //printf("%s",buff);
+
     getfile.close();
 }
 
@@ -62,10 +62,10 @@ int main() {
         str >> no>>path;
         std::cout<<no<<std::endl;
         std::cout<<path<<std::endl;
-        if(path == "/close"){
-            break;
-        }
-        readFile(path,html);
+        if(path == "/"){
+            readFile("/index.html",html);
+        }else
+            readFile(path,html);
         //printf("%s",buff);
         if(-1 == send(connfd,html, strlen(html),0)){
             perr_exit("send error");

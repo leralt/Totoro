@@ -1,21 +1,24 @@
 #ifndef _TCPSERVER_H
 #define _TCPSERVER_H
 
-#include <string>
+#include <cstring>
+#include <unistd.h>
+#include <iostream>
+#include <arpa/inet.h>
+#include "TcpSocket.h"
+
 
 using namespace std;
-
 
 class TcpServer {
 public:
     TcpServer();
     ~TcpServer();
 
-    int send_msg(string message);
-    string recv_msg();
+    int listen(unsigned short port);
+    TcpSocket* accept(sockaddr_in* addr);
 private:
-    int conn_fd;     //通信套接字
-    int listen_fd;   //监听套接字
+    int sock_fd;   //监听套接字
 };
 
 

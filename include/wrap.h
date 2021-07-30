@@ -1,9 +1,7 @@
-//
-// Created by 辰龙 on 2021/7/12.
-//
-
 #ifndef TOTORO_WRAP_H
 #define TOTORO_WRAP_H
+
+#pragma once
 
 #include <cstdlib>
 #include <cerrno>
@@ -81,6 +79,5 @@ void Close(int fd)
     if (close(fd) == -1)
         perr_exit("close error");
 }
-
 
 #endif //TOTORO_WRAP_H
