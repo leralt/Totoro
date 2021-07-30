@@ -1,20 +1,17 @@
-#include "../include/TcpServer.h"
+#include "TcpServer.h"
+#include "wrap.h"
 
-TcpServer::TcpServer()
-{
+TcpServer::TcpServer() {
     sock_fd = Socket(AF_INET, SOCK_STREAM, 0);
 }
 
-TcpServer::~TcpServer()
-{
+TcpServer::~TcpServer() {
     Close(sock_fd);
 }
 
 int TcpServer::listen(unsigned short port)
 {
-    struct sockaddr_in sockaddrIn
-    {
-    };
+    struct sockaddr_in sockaddrIn{};
     bzero(&sockaddrIn, sizeof(sockaddrIn));
     sockaddrIn.sin_family = AF_INET;
     sockaddrIn.sin_addr.s_addr = htonl(INADDR_ANY);
